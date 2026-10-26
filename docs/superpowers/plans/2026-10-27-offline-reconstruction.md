@@ -45,8 +45,8 @@
 
 - [x] Write failing launcher tests that inspect emitted argv for network none, read-only input and safe handling of paths, and reject invalid inputs/existing output.
 - [x] Implement launcher with no shell interpolation; apply network none, cap-drop and no-new-privileges.
-- [ ] Build pinned CUDA/COLMAP/3DGRUT image and precache VGG/LPIPS weights at build time. Verify actual GPU feature extraction and imports without networking.
-- [ ] Use a generated synthetic video for an offline reconstruction integration check where practical. Log exact success/failure; do not claim a real room was tested.
+- [x] Build pinned CUDA/COLMAP/3DGRUT image and precache VGG/LPIPS weights at build time. Verify actual GPU feature extraction and imports without networking.
+- [x] Use a generated synthetic video for an offline reconstruction integration check where practical. Log exact success/failure; do not claim a real room was tested.
 
 ### Task 3: Transfer and Git delivery
 
@@ -54,11 +54,11 @@
 
 **Interfaces:** exporter writes image tar, sha256 checksum and source bundle under ignored `outputs/transfer/`; README gives build, save/load, isolated run and host Isaac Sim import commands.
 
-- [ ] Verify archive roundtrip with Docker load/inspect and checksum; test Git ignore behavior with local canary files.
-- [ ] Record tested environment and all unresolved hardware/scene limitations.
-- [ ] Initialize repository on a feature branch, stage explicit code/docs only, inspect staged file list and commit.
-- [ ] Obtain a fresh whole-change review, address important findings with regressions and rerun checks.
-- [ ] Push only if an explicitly identified remote is available; otherwise deliver local commit and bundle with exact push instructions.
+- [x] Verify archive roundtrip with Docker load/inspect and checksum; test Git ignore behavior with local canary files.
+- [x] Record tested environment and all unresolved hardware/scene limitations.
+- [x] Initialize repository on a feature branch, stage explicit code/docs only, inspect staged file list and commit.
+- [x] Obtain a fresh whole-change review, address important findings with regressions and rerun checks.
+- [x] Push only if an explicitly identified remote is available; otherwise deliver local commit and bundle with exact push instructions.
 
 ## Execution ledger
 
@@ -66,3 +66,5 @@
 - Scope: this plan delivers the user's first-priority reconstruction and transfer milestone. The full RBY1/Quest/LeRobot host milestone remains pending and will be reported explicitly.
 - Verification: context audit initially detected Python bytecode included through directory re-inclusion. Reproduced with a real Docker COPY build; tightened directory exclusions; second audit contains exactly the four allowed source/config files.
 - Final review: fixed the Important writable-input alias finding; added `test_input_cannot_be_inside_writable_output_mount`, observed RED then GREEN; whole suite 10/10.
+- 2026-10-27: After Orca restart, verified remote commit and finished build cache before resuming; did not repeat completed dependency installation. Offline synthetic integration passed with 40/40 registrations and NuRec USDZ export. Archive checksum and Docker load passed. Host Isaac/robot/control milestones remain explicitly unimplemented.
+- Integration choice: user explicitly requested upload to the provided empty repository. Preserve and push its initial/default feature branch; do not invent a base branch, merge or PR.

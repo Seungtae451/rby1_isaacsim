@@ -4,6 +4,8 @@
 
 **현재 구현 범위:** 영상 재구성 전용 Docker와 Git/오프라인 전송 절차입니다. Isaac Sim 실행, RBY1 Model A 배치, Quest 컨트롤러·팔꿈치 retargeting, LeRobot 수집, 로봇 정책 학습은 **호스트 실행 대상으로 설계했으며 아직 구현되지 않았습니다.** 전체 설계는 [설계서](docs/superpowers/specs/2026-10-26-local-nurec-rby1-design.md)에 있습니다.
 
+합성 영상 40프레임의 COLMAP 등록·3DGUT 100회 학습·USDZ 생성, 네트워크 없는 실행, 이미지 save/load를 검증했습니다. 실제 회사 영상과 호스트 Isaac Sim 렌더링은 미검증입니다. 자세한 결과는 [검증 기록](docs/verification.md)을 확인하세요.
+
 ## 이동할 파일
 
 Git 저장소에는 소스·Dockerfile·스크립트·설정·문서만 저장합니다. **Git clone만으로 Docker 이미지가 생기지는 않습니다.** 인터넷이 없는 슈퍼컴에서는 여기서 빌드한 이미지 tar도 별도로 가져가야 합니다.
