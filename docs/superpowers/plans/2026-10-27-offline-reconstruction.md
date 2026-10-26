@@ -32,10 +32,10 @@
 
 **Interfaces:** `commands(video, job, grut, python, iterations=30000)` returns argv lists; `select_model(job)` validates/selects largest model; CLI produces `scene.usdz`, manifest and pipeline log.
 
-- [ ] Add failing tests for model selection without model 0, corrupt COLMAP text, zero-byte/malformed USDZ, preservation of existing jobs and Hydra path metacharacters.
-- [ ] Run `python3 -m unittest discover -s tests -v`, observe expected failures.
-- [ ] Implement validation and orchestration, preserving inputs and failed jobs.
-- [ ] Run the suite; commit tested CLI.
+- [x] Add failing tests for model selection without model 0, corrupt COLMAP text, zero-byte/malformed USDZ, preservation of existing jobs and Hydra path metacharacters.
+- [x] Run `python3 -m unittest discover -s tests -v`, observe expected failures.
+- [x] Implement validation and orchestration, preserving inputs and failed jobs.
+- [x] Run the suite; commit tested CLI.
 
 ### Task 2: Reconstruction-only image and isolated launcher
 
@@ -43,8 +43,8 @@
 
 **Interfaces:** host launcher takes `--video`, `--output`, optional image/GPU selection and `--dry-run`; mounts only one video and output parent. Build script produces `rby1-nurec:local` without access to private input directories.
 
-- [ ] Write failing launcher tests that inspect emitted argv for network none, read-only input and safe handling of paths, and reject invalid inputs/existing output.
-- [ ] Implement launcher with no shell interpolation; apply network none, cap-drop and no-new-privileges.
+- [x] Write failing launcher tests that inspect emitted argv for network none, read-only input and safe handling of paths, and reject invalid inputs/existing output.
+- [x] Implement launcher with no shell interpolation; apply network none, cap-drop and no-new-privileges.
 - [ ] Build pinned CUDA/COLMAP/3DGRUT image and precache VGG/LPIPS weights at build time. Verify actual GPU feature extraction and imports without networking.
 - [ ] Use a generated synthetic video for an offline reconstruction integration check where practical. Log exact success/failure; do not claim a real room was tested.
 
@@ -64,3 +64,5 @@
 
 - 2026-10-27: User directed preparation/build/Git delivery following the corrected Docker scope. Execute in this project directory, on a new feature branch; no separate worktree is needed for this previously empty project. Native execution selected to minimize setup and shared context; final review will use a fresh reviewer.
 - Scope: this plan delivers the user's first-priority reconstruction and transfer milestone. The full RBY1/Quest/LeRobot host milestone remains pending and will be reported explicitly.
+- Verification: context audit initially detected Python bytecode included through directory re-inclusion. Reproduced with a real Docker COPY build; tightened directory exclusions; second audit contains exactly the four allowed source/config files.
+- Final review: fixed the Important writable-input alias finding; added `test_input_cannot_be_inside_writable_output_mount`, observed RED then GREEN; whole suite 10/10.

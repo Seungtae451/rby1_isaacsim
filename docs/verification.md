@@ -4,7 +4,7 @@
 
 ## 현재 확인한 사항
 
-- Python 표준 라이브러리 테스트 9개 통과. COLMAP 모델 선택·손상된 pose·USDZ 검사·Hydra 경로 인코딩·기존 출력 보존·Docker 실행 인자·고정 소스 checkout을 확인했다.
+- Python 표준 라이브러리 테스트 10개 통과. COLMAP 모델 선택·손상된 pose·USDZ 검사·Hydra 경로 인코딩·기존 출력 보존·Docker 실행 인자·고정 소스 checkout을 확인했다. 원본 영상이 쓰기 가능한 출력 부모에 포함되는 경우의 실행 거부도 확인했다.
 - `bash -n scripts/build_image.sh scripts/export_image.sh`와 Python compileall 통과.
 - 실제 Docker `COPY .` 컨텍스트를 별도 scratch 빌드로 추출해 허용 파일 4개만 포함됨을 확인했다: Dockerfile, precache.py, 패키지 __init__.py, reconstruct.py. 영상 canary, external 자산, 호스트 스크립트, 인증서, Git 폴더는 포함되지 않는다.
 - `git check-ignore`로 `data/`, `outputs/`, `external/`이 제외됨을 확인했다.

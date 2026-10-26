@@ -16,7 +16,7 @@ class LauncherTests(unittest.TestCase):
             base = Path(tmp)
             video = base / 'input with spaces;$.mp4'
             video.touch()
-            output = base / 'output with spaces'
+            output = base / 'output parent' / 'job with spaces'
             result = subprocess.run([sys.executable, str(LAUNCHER), '--video', str(video),
                                      '--output', str(output), '--dry-run'],
                                     text=True, capture_output=True)
@@ -30,6 +30,16 @@ class LauncherTests(unittest.TestCase):
             self.assertEqual(len(mounts), 2)
             self.assertIn(f'type=bind,src={video},dst=/input/video,readonly', mounts)
             self.assertFalse(output.exists())
+
+    def test_input_cannot_be_inside_writable_output_mount(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            video = base / 'input.mp4'; video.write_bytes(b'original')
+            result = subprocess.run([sys.executable, str(LAUNCHER), '--video', str(video),
+                                     '--output', str(base / 'job'), '--dry-run'],
+                                    text=True, capture_output=True)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertEqual(video.read_bytes(), b'original')
 
     def test_existing_output_is_preserved(self):
         self.assertTrue(LAUNCHER.exists())

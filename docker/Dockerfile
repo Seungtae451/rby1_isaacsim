@@ -40,7 +40,9 @@ RUN git clone https://github.com/nv-tlabs/3dgrut.git /opt/3dgrut \
 RUN apt-get update && apt-get install -y --no-install-recommends wget \
     && rm -rf /var/lib/apt/lists/* \
     && UV_PROJECT_ENVIRONMENT=/opt/venv bash /opt/3dgrut/scripts/install_slangc.sh \
-    && chmod -R a+rwX /opt/3dgrut/threedgut_tracer/include
+    && chmod -R a+rwX /opt/3dgrut/threedgut_tracer/include \
+    && mkdir -p /opt/licenses \
+    && wget -qO /opt/licenses/COLMAP-COPYING.txt https://raw.githubusercontent.com/colmap/colmap/3.11.1/COPYING.txt
 
 COPY docker/precache.py /opt/precache.py
 RUN python /opt/precache.py \

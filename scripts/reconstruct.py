@@ -20,6 +20,8 @@ def main():
         p.error('Video must be an existing local file')
     if output.exists():
         p.error('Output already exists; choose a new directory')
+    if video.is_relative_to(output.parent):
+        p.error('Video must be outside the writable output parent; choose a dedicated output folder')
     if any(',' in str(x) or '\n' in str(x) for x in (video, output)):
         p.error('Docker bind mount paths cannot contain commas or newlines')
     if not args.gpu or any(c in args.gpu for c in ',"\n'):

@@ -1,6 +1,6 @@
 # 로컬 영상 재구성와 RBY1 Model A 데이터 수집 설계
 
-상태: **승인 대기. 구현·배포 완료 문서가 아님.** 기존 `reconstruct.py` 등은 Superpowers 적용 전 작성한 미검증 초안이다.
+상태: **2026-10-27 사용자 요청에 따라 영상 재구성·Git·Docker 전달 단계를 구현 중.** 전체 RBY1/Quest/LeRobot 구현·배포 완료 문서가 아니다. 실제 검증 결과는 `docs/verification.md`를 기준으로 한다.
 
 ## 목적과 우선순위
 
