@@ -1,0 +1,9 @@
+**
+!docker/
+docker/**
+!docker/Dockerfile
+!docker/precache.py
+!rby1_local/
+rby1_local/**
+!rby1_local/__init__.py
+!rby1_local/reconstruct.py

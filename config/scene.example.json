@@ -1,0 +1,11 @@
+{
+  "asset": "/data/jobs/room/scene.usdz",
+  "metric_alignment_verified": false,
+  "alignment_note": "Set scale using a measured reference length; rotate floor to Z-up, translate floor to z=0, then verify in Isaac.",
+  "scale": 1.0,
+  "translation": [0.0, 0.0, 0.0],
+  "rotation_xyz_deg": [0.0, 0.0, 0.0],
+  "colliders": [],
+  "camera_position": [2.5, 2.5, 2.0],
+  "camera_target": [0.0, 0.0, 1.0]
+}

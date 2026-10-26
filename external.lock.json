@@ -1,0 +1,5 @@
+{
+  "rby1-sim-isaac": {"url": "https://github.com/RainbowRobotics/rby1-sim-isaac.git", "commit": "e2415548e5d6db712ecbff2074741b70261d0cbf"},
+  "rby1-sdk": {"url": "https://github.com/RainbowRobotics/rby1-sdk.git", "commit": "ac7e83056e0775c4680a50d8c7cb3d9c3c66164d"},
+  "3dgrut": {"url": "https://github.com/nv-tlabs/3dgrut.git", "commit": "e6f4552b408af020a96de09ab5757f9b57430aaa"}
+}
